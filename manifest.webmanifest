@@ -1,14 +1,14 @@
 {
-  "name": "قدم بعدی | همراه انگیزشی",
-  "short_name": "قدم بعدی",
-  "description": "همراه انگیزشی برای ساخت عادت، گرفتن امتیاز و باز کردن جایزه‌ها",
+  "name": "قدم‌های فاطمه | همراه انگیزشی",
+  "short_name": "قدم‌های فاطمه",
+  "description": "همراه انگیزشی فاطمه برای یادگیری، استمرار و باز کردن جایزه‌ها",
   "lang": "fa",
   "dir": "rtl",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f8f7ff",
-  "theme_color": "#7c3aed",
+  "background_color": "#f7f7fc",
+  "theme_color": "#7257ff",
   "icons": [
     {"src":"icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
     {"src":"icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
