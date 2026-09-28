@@ -2,194 +2,120 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#7257ff" />
-  <meta name="description" content="همراه انگیزشی فاطمه برای یادگیری، استمرار و باز کردن جایزه‌ها." />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#7C5CFC" />
+  <meta name="description" content="اپ انگیزشی فاطمه برای ساختن عادت‌های کوچک و گرفتن جایزه" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
-  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
-  <title>قدم‌های فاطمه</title>
+  <title>قدم‌های فاطمه ✨</title>
 </head>
 <body>
-  <div class="ambient ambient-one"></div>
-  <div class="ambient ambient-two"></div>
-
   <div class="app-shell">
     <header class="topbar">
-      <div class="brand-block">
-        <span class="brand-mark">F</span>
-        <div>
-          <p class="eyebrow">قدم‌های فاطمه</p>
-          <h1 id="greetingTitle">سلام فاطمه ✨</h1>
-          <p class="muted" id="todayLabel"></p>
-        </div>
+      <div>
+        <div class="eyebrow">یک قدم کوچک، هر روز</div>
+        <h1>سلام فاطمه ✨</h1>
+        <p class="muted">امروز فقط یک کار کوچیک انجام بده؛ همین کافیه.</p>
       </div>
-      <div class="top-actions">
-        <button id="shareTopBtn" class="icon-btn" aria-label="ارسال گزارش" title="ارسال گزارش">↗</button>
-        <button id="settingsBtn" class="icon-btn" aria-label="تنظیمات" title="تنظیمات">⚙</button>
-      </div>
+      <button id="installBtn" class="icon-btn hidden" aria-label="نصب اپ">＋</button>
     </header>
 
-    <main>
-      <section class="hero-card">
-        <div class="hero-copy">
-          <span class="pill"><span class="pulse-dot"></span> امروز فقط یک قدم کوچیک</span>
-          <h2 id="heroMessage">قرار نیست همه‌چیز رو یک‌روزه حل کنی؛ فقط امروز رو بساز.</h2>
-          <p>هر قدم کوچیک امتیاز داره. استمرار مهم‌تر از بی‌نقص بودنه.</p>
-          <div class="hero-actions">
-            <button class="primary-btn light" id="focusBtn">▶ تمرکز ۳۰ دقیقه‌ای</button>
-            <button class="glass-btn" id="installBtn" hidden>نصب اپ</button>
-          </div>
-        </div>
-
-        <div class="hero-side">
-          <div class="progress-ring" id="progressRing" style="--progress:0">
-            <div class="progress-ring-inner">
-              <strong id="progressPercent">۰٪</strong>
-              <span>امروز</span>
-            </div>
-          </div>
-          <div class="today-points">
-            <span>امتیاز امروز</span>
-            <strong id="todayXpValue">۰</strong>
-            <small>XP</small>
-          </div>
-        </div>
-      </section>
-
-      <section class="stats-grid" aria-label="آمار">
-        <article class="stat-card accent-purple">
-          <span class="stat-icon">⭐</span>
-          <div><strong id="xpValue">۰</strong><span>امتیاز کل</span></div>
-        </article>
-        <article class="stat-card accent-orange">
-          <span class="stat-icon">🔥</span>
-          <div><strong id="streakValue">۰</strong><span>روز استمرار</span></div>
-        </article>
-        <article class="stat-card accent-mint">
-          <span class="stat-icon">🏆</span>
-          <div><strong id="levelValue">۱</strong><span>سطح فعلی</span></div>
-        </article>
-        <article class="stat-card accent-pink">
-          <span class="stat-icon">✓</span>
-          <div><strong id="doneTodayValue">۰</strong><span>کار امروز</span></div>
-        </article>
-      </section>
-
-      <section class="next-reward-card" id="nextRewardCard">
-        <div class="reward-visual">🎁</div>
-        <div class="next-reward-copy">
-          <p class="eyebrow">جایزه بعدی</p>
-          <h3 id="nextRewardTitle">در حال محاسبه...</h3>
-          <div class="mini-progress"><span id="nextRewardProgress"></span></div>
-          <p class="muted" id="nextRewardMeta"></p>
-        </div>
-      </section>
-
-      <section class="card-section">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">ماموریت‌های امروز</p>
-            <h3>کم، واقعی، قابل انجام</h3>
-          </div>
-          <button class="text-btn" id="addTaskBtn">＋ افزودن</button>
-        </div>
-        <div id="taskList" class="task-list"></div>
-      </section>
-
-      <section class="card-section rewards-section">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">جایزه‌ها</p>
-            <h3>برای ادامه دادن، نه تحت فشار بودن 💜</h3>
-          </div>
-          <button class="text-btn" id="addRewardBtn">＋ افزودن</button>
-        </div>
-        <div id="rewardList" class="reward-grid"></div>
-      </section>
-
-      <section class="card-section">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">۷ روز اخیر</p>
-            <h3>ریتم پیشرفت فاطمه</h3>
-          </div>
-          <span class="week-total" id="weekTotal">۰ XP</span>
-        </div>
-        <div id="weekChart" class="week-chart" aria-label="نمودار فعالیت هفتگی"></div>
-      </section>
-
-      <section class="share-card">
-        <div class="share-icon">💌</div>
-        <div class="share-copy">
-          <p class="eyebrow">گزارش پیشرفت</p>
-          <h3>امروز چقدر جلو رفتی؟</h3>
-          <p class="muted">یک گزارش کوتاه از امتیاز، استمرار و کارهای انجام‌شده بساز و برای همراهت بفرست.</p>
-        </div>
-        <button class="primary-btn" id="shareReportBtn">ارسال گزارش</button>
-      </section>
-
-      <section class="encouragement-card">
-        <div class="heart-orb">💜</div>
+    <section class="hero-card">
+      <div class="hero-main">
         <div>
-          <p class="eyebrow">یادآوری امروز</p>
-          <h3 id="encouragementText">تو لازم نیست سریع باشی؛ فقط ادامه بده.</h3>
-          <button class="text-btn" id="newMessageBtn">یه جمله دیگه</button>
+          <span class="mini-label">امتیاز کل</span>
+          <div class="xp-line"><strong id="totalXP">0</strong><span>XP</span></div>
         </div>
-      </section>
-    </main>
+        <div class="streak-pill">🔥 <span id="streak">0</span> روز استمرار</div>
+      </div>
+      <div class="level-row">
+        <span id="levelName">شروع قشنگ</span>
+        <span id="nextLevelText">تا سطح بعد 50 XP</span>
+      </div>
+      <div class="progress-track"><div id="levelProgress" class="progress-fill"></div></div>
+    </section>
 
-    <footer>
-      <p>برای قدم‌های کوچیکی که کم‌کم نتیجه‌های بزرگ می‌سازن.</p>
-    </footer>
+    <section class="stats-grid">
+      <div class="stat-card"><span>امروز</span><strong id="todayXP">0 XP</strong></div>
+      <div class="stat-card"><span>انجام‌شده</span><strong id="doneCount">0 / 0</strong></div>
+      <div class="stat-card"><span>جایزه بعدی</span><strong id="nextRewardShort">—</strong></div>
+    </section>
+
+    <section class="section-card">
+      <div class="section-head">
+        <div><span class="mini-label">ماموریت‌های امروز</span><h2>فقط یکی رو شروع کن 💜</h2></div>
+        <button id="addTaskBtn" class="text-btn">+ افزودن</button>
+      </div>
+      <div id="taskList" class="task-list"></div>
+    </section>
+
+    <section class="section-card reward-card">
+      <div class="section-head">
+        <div><span class="mini-label">جایزه</span><h2 id="nextRewardTitle">اولین جایزه نزدیکه 🎁</h2></div>
+        <div class="reward-badge" id="rewardBadge">0 / 50</div>
+      </div>
+      <p id="nextRewardDesc" class="muted">با امتیازهای کوچیک، جایزه‌ات باز میشه.</p>
+      <div class="progress-track"><div id="rewardProgress" class="progress-fill reward-fill"></div></div>
+      <button id="showRewardsBtn" class="secondary-btn full">دیدن همه جایزه‌ها</button>
+    </section>
+
+    <section class="section-card">
+      <div class="section-head">
+        <div><span class="mini-label">تمرکز کوتاه</span><h2>۳۰ دقیقه برای خودت</h2></div>
+        <div class="timer-display" id="timerDisplay">30:00</div>
+      </div>
+      <p class="muted">گوشی کنار، فقط یک ویدیو یا یک تمرین. بعدش استراحت.</p>
+      <div class="timer-actions">
+        <button id="timerStart" class="primary-btn">شروع تمرکز</button>
+        <button id="timerReset" class="secondary-btn">ریست</button>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <div class="section-head">
+        <div><span class="mini-label">گزارش</span><h2>پیشرفتت رو بفرست 💌</h2></div>
+      </div>
+      <p class="muted">با یک لمس، خلاصه امروز آماده میشه تا برای کسی که کنارت هست بفرستی.</p>
+      <button id="shareBtn" class="secondary-btn full">ارسال گزارش امروز</button>
+    </section>
+
+    <section class="section-card cloud-card">
+      <div class="section-head">
+        <div><span class="mini-label">همگام‌سازی</span><h2>پنل همراه</h2></div>
+        <span id="cloudStatus" class="status-dot offline">محلی</span>
+      </div>
+      <p class="muted">اگر همگام‌سازی ابری را فعال کنی، امتیازها روی پنل همراه هم زنده دیده می‌شوند.</p>
+      <label class="field-label" for="roomCode">کد مشترک</label>
+      <div class="inline-field">
+        <input id="roomCode" maxlength="20" placeholder="مثلاً FATEMEH24" />
+        <button id="saveRoomBtn" class="secondary-btn">ذخیره</button>
+      </div>
+      <a href="partner.html" class="link-btn">باز کردن پنل همراه</a>
+    </section>
+
+    <footer>ساخته شده برای روزهای بهتر، نه روزهای بی‌نقص ✨</footer>
   </div>
 
-  <dialog id="taskDialog" class="dialog-card">
+  <dialog id="taskDialog" class="modal">
     <form method="dialog" id="taskForm">
-      <div class="dialog-head"><h3>افزودن ماموریت</h3><button value="cancel" class="icon-btn">✕</button></div>
-      <label>عنوان کار<input id="taskTitleInput" required maxlength="60" placeholder="مثلاً دیدن یک ویدیوی آموزشی" /></label>
-      <label>امتیاز<input id="taskPointsInput" type="number" min="1" max="100" value="10" required /></label>
-      <menu><button value="cancel" class="ghost-btn dark">بی‌خیال</button><button id="saveTaskBtn" value="default" class="primary-btn">اضافه کن</button></menu>
+      <div class="modal-head"><h3>ماموریت جدید</h3><button value="cancel" class="close-btn">×</button></div>
+      <label>عنوان<input id="newTaskTitle" required maxlength="60" placeholder="مثلاً دیدن یک ویدیوی آموزشی" /></label>
+      <label>امتیاز<input id="newTaskXP" type="number" min="5" max="100" step="5" value="10" required /></label>
+      <button value="default" id="saveTaskSubmit" class="primary-btn full">اضافه کن</button>
     </form>
   </dialog>
 
-  <dialog id="rewardDialog" class="dialog-card">
-    <form method="dialog" id="rewardForm">
-      <div class="dialog-head"><h3>افزودن جایزه</h3><button value="cancel" class="icon-btn">✕</button></div>
-      <label>اسم جایزه<input id="rewardTitleInput" required maxlength="60" placeholder="مثلاً کافه موردعلاقه" /></label>
-      <label>امتیاز لازم<input id="rewardCostInput" type="number" min="5" max="1000" value="50" required /></label>
-      <menu><button value="cancel" class="ghost-btn dark">بی‌خیال</button><button id="saveRewardBtn" value="default" class="primary-btn">اضافه کن</button></menu>
-    </form>
+  <dialog id="rewardsDialog" class="modal">
+    <div class="modal-head"><h3>جایزه‌ها 🎁</h3><button id="closeRewards" class="close-btn">×</button></div>
+    <div id="rewardList" class="reward-list"></div>
   </dialog>
 
-  <dialog id="settingsDialog" class="dialog-card">
-    <form method="dialog" id="settingsForm">
-      <div class="dialog-head"><h3>تنظیمات شخصی</h3><button value="cancel" class="icon-btn">✕</button></div>
-      <label>اسم<input id="nameInput" maxlength="30" placeholder="فاطمه" /></label>
-      <label>پیام اصلی<textarea id="customMessageInput" maxlength="140" rows="3" placeholder="یک جمله‌ای که دوست داری هر روز ببینه"></textarea></label>
-      <menu><button value="cancel" class="ghost-btn dark">بستن</button><button id="saveSettingsBtn" value="default" class="primary-btn">ذخیره</button></menu>
-    </form>
-  </dialog>
-
-  <dialog id="focusDialog" class="dialog-card focus-dialog">
-    <form method="dialog">
-      <div class="dialog-head"><h3>تمرکز ۳۰ دقیقه‌ای</h3><button id="closeFocusBtn" value="cancel" class="icon-btn">✕</button></div>
-      <div class="timer" id="timerDisplay">۳۰:۰۰</div>
-      <p class="muted center">فقط همین ۳۰ دقیقه؛ یک کار مشخص، بدون فشار برای کامل بودن.</p>
-      <div class="timer-actions">
-        <button type="button" class="primary-btn" id="timerToggleBtn">شروع</button>
-        <button type="button" class="ghost-btn dark" id="timerResetBtn">ریست</button>
-      </div>
-    </form>
-  </dialog>
-
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
-
-  <script src="app.js" defer></script>
+  <script src="firebase-config.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

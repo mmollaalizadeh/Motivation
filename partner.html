@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#111827" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>پنل همراه فاطمه</title>
+</head>
+<body class="partner-page">
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">پنل همراه</div>
+        <h1>پیشرفت فاطمه 🌱</h1>
+        <p class="muted">بدون فشار؛ فقط برای دیدن قدم‌های کوچیک و تشویقش.</p>
+      </div>
+      <a class="icon-btn link-icon" href="index.html">←</a>
+    </header>
+
+    <section class="hero-card dark-hero">
+      <div class="hero-main">
+        <div><span class="mini-label">امتیاز کل</span><div class="xp-line"><strong id="pTotalXP">0</strong><span>XP</span></div></div>
+        <div class="streak-pill">🔥 <span id="pStreak">0</span> روز</div>
+      </div>
+      <div class="level-row"><span id="pLevel">—</span><span id="pUpdated">هنوز داده‌ای نیست</span></div>
+    </section>
+
+    <section class="stats-grid">
+      <div class="stat-card"><span>امتیاز امروز</span><strong id="pTodayXP">0 XP</strong></div>
+      <div class="stat-card"><span>ماموریت‌ها</span><strong id="pDone">0 / 0</strong></div>
+      <div class="stat-card"><span>جایزه بعدی</span><strong id="pReward">—</strong></div>
+    </section>
+
+    <section class="section-card">
+      <div class="section-head"><div><span class="mini-label">اتصال</span><h2>کد مشترک</h2></div><span id="pCloudStatus" class="status-dot offline">محلی</span></div>
+      <p class="muted">همان کدی را وارد کن که داخل اپ فاطمه ثبت شده.</p>
+      <div class="inline-field"><input id="pRoomCode" maxlength="20" placeholder="FATEMEH24" /><button id="pConnect" class="secondary-btn">اتصال</button></div>
+    </section>
+
+    <section class="section-card">
+      <div class="section-head"><div><span class="mini-label">امروز</span><h2>کارهای انجام‌شده</h2></div></div>
+      <div id="pTasks" class="task-list"></div>
+    </section>
+
+    <section class="section-card encouragement-card">
+      <div class="section-head"><div><span class="mini-label">یادآوری برای تو</span><h2>تشویق، نه بازخواست 💜</h2></div></div>
+      <p class="muted">به‌جای «چقدر خوندی؟» بگو: «دیدم امروز یه قدم برداشتی، دمت گرم. دوست داری درباره چیزی که یاد گرفتی برام بگی؟»</p>
+    </section>
+  </div>
+  <script src="firebase-config.js"></script>
+  <script src="partner.js"></script>
+</body>
+</html>
