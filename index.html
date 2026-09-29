@@ -1,121 +1,49 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#7C5CFC" />
-  <meta name="description" content="اپ انگیزشی فاطمه برای ساختن عادت‌های کوچک و گرفتن جایزه" />
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="icon" href="icons/icon-192.png" />
-  <link rel="apple-touch-icon" href="icons/icon-192.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-  <title>قدم‌های فاطمه ✨</title>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#7657e8"><meta name="description" content="قدم‌های فاطمه؛ اپ انگیزشی دونفره با امتیاز و جایزه">
+  <link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"><title>قدم‌های فاطمه ✨</title>
 </head>
 <body>
-  <div class="app-shell">
-    <header class="topbar">
-      <div>
-        <div class="eyebrow">یک قدم کوچک، هر روز</div>
-        <h1>سلام فاطمه ✨</h1>
-        <p class="muted">امروز فقط یک کار کوچیک انجام بده؛ همین کافیه.</p>
-      </div>
-      <button id="installBtn" class="icon-btn hidden" aria-label="نصب اپ">＋</button>
-    </header>
+<main class="app">
+  <header class="topbar"><div><div class="eyebrow">ONE SMALL STEP A DAY</div><h1>سلام فاطمه ✨</h1><p class="muted">قرار نیست بی‌نقص باشی؛ فقط امروز یه قدم کوچیک بردار.</p></div><span id="liveStatus" class="live-pill">آفلاین</span></header>
 
-    <section class="hero-card">
-      <div class="hero-main">
-        <div>
-          <span class="mini-label">امتیاز کل</span>
-          <div class="xp-line"><strong id="totalXP">0</strong><span>XP</span></div>
-        </div>
-        <div class="streak-pill">🔥 <span id="streak">0</span> روز استمرار</div>
-      </div>
-      <div class="level-row">
-        <span id="levelName">شروع قشنگ</span>
-        <span id="nextLevelText">تا سطح بعد 50 XP</span>
-      </div>
-      <div class="progress-track"><div id="levelProgress" class="progress-fill"></div></div>
-    </section>
+  <section class="hero">
+    <div class="hero-grid">
+      <div><div class="balance-label">موجودی قابل خرج</div><div class="balance"><strong id="balance">۰</strong><span>XP</span></div><div class="lifetime">XP کل: <b id="lifetime">۰</b> · <span id="levelTitle">شروع قشنگ 🌱</span></div><div class="level-chip">🔥 <span id="streak">۰</span> روز استمرار</div></div>
+      <div id="progressRing" class="ring"><div class="ring-content"><strong id="progressPct">۰٪</strong><span>ماموریت امروز</span></div></div>
+    </div>
+    <div class="hero-progress"><div class="bar"><i id="levelBar"></i></div><div class="hero-progress-text"><span id="levelText">Level 1</span><span id="nextLevelText">تا سطح بعد 100 XP</span></div></div>
+  </section>
 
-    <section class="stats-grid">
-      <div class="stat-card"><span>امروز</span><strong id="todayXP">0 XP</strong></div>
-      <div class="stat-card"><span>انجام‌شده</span><strong id="doneCount">0 / 0</strong></div>
-      <div class="stat-card"><span>جایزه بعدی</span><strong id="nextRewardShort">—</strong></div>
-    </section>
+  <section class="quick-stats">
+    <div class="stat"><span>امتیاز امروز</span><strong id="todayXp">۰ XP</strong></div>
+    <div class="stat"><span>ماموریت‌ها</span><strong id="taskStat">۰ / ۳</strong></div>
+    <div class="stat"><span>جایزه نزدیک</span><strong id="nextReward">☕ 100 XP</strong></div>
+  </section>
 
-    <section class="section-card">
-      <div class="section-head">
-        <div><span class="mini-label">ماموریت‌های امروز</span><h2>فقط یکی رو شروع کن 💜</h2></div>
-        <button id="addTaskBtn" class="text-btn">+ افزودن</button>
-      </div>
-      <div id="taskList" class="task-list"></div>
-    </section>
+  <section class="card soft-card"><div class="message"><div class="message-icon">💌</div><div><div class="section-kicker">پیام امروز</div><p id="dailyMessage" class="message-text"></p></div></div></section>
 
-    <section class="section-card reward-card">
-      <div class="section-head">
-        <div><span class="mini-label">جایزه</span><h2 id="nextRewardTitle">اولین جایزه نزدیکه 🎁</h2></div>
-        <div class="reward-badge" id="rewardBadge">0 / 50</div>
-      </div>
-      <p id="nextRewardDesc" class="muted">با امتیازهای کوچیک، جایزه‌ات باز میشه.</p>
-      <div class="progress-track"><div id="rewardProgress" class="progress-fill reward-fill"></div></div>
-      <button id="showRewardsBtn" class="secondary-btn full">دیدن همه جایزه‌ها</button>
-    </section>
+  <section class="card"><div class="card-head"><div><div class="section-kicker">CHECK-IN</div><h2>امروز چه حالی داری؟</h2></div></div><div id="moodGrid" class="mood-grid"></div><button id="restBtn" class="rest-btn" type="button">🌙 امروز رو Rest Day می‌گیرم؛ استریکم حفظ بشه</button></section>
 
-    <section class="section-card">
-      <div class="section-head">
-        <div><span class="mini-label">تمرکز کوتاه</span><h2>۳۰ دقیقه برای خودت</h2></div>
-        <div class="timer-display" id="timerDisplay">30:00</div>
-      </div>
-      <p class="muted">گوشی کنار، فقط یک ویدیو یا یک تمرین. بعدش استراحت.</p>
-      <div class="timer-actions">
-        <button id="timerStart" class="primary-btn">شروع تمرکز</button>
-        <button id="timerReset" class="secondary-btn">ریست</button>
-      </div>
-    </section>
+  <section class="card"><div class="card-head"><div><div class="section-kicker">TODAY QUEST</div><h2>ماموریت امروز فاطمه 🎯</h2></div><span id="questCount" class="live-pill">۰ / ۳</span></div><div id="taskList" class="task-list"></div></section>
 
-    <section class="section-card">
-      <div class="section-head">
-        <div><span class="mini-label">گزارش</span><h2>پیشرفتت رو بفرست 💌</h2></div>
-      </div>
-      <p class="muted">با یک لمس، خلاصه امروز آماده میشه تا برای کسی که کنارت هست بفرستی.</p>
-      <button id="shareBtn" class="secondary-btn full">ارسال گزارش امروز</button>
-    </section>
+  <section class="card"><div class="card-head"><div><div class="section-kicker">REWARD SHOP</div><h2>XP هاتو خرج کن 🎁</h2></div></div><div id="rewardGrid" class="reward-grid"></div></section>
 
-    <section class="section-card cloud-card">
-      <div class="section-head">
-        <div><span class="mini-label">همگام‌سازی</span><h2>پنل همراه</h2></div>
-        <span id="cloudStatus" class="status-dot offline">محلی</span>
-      </div>
-      <p class="muted">اگر همگام‌سازی ابری را فعال کنی، امتیازها روی پنل همراه هم زنده دیده می‌شوند.</p>
-      <label class="field-label" for="roomCode">کد مشترک</label>
-      <div class="inline-field">
-        <input id="roomCode" maxlength="20" placeholder="مثلاً FATEMEH24" />
-        <button id="saveRoomBtn" class="secondary-btn">ذخیره</button>
-      </div>
-      <a href="partner.html" class="link-btn">باز کردن پنل همراه</a>
-    </section>
+  <section class="card"><div class="card-head"><div><div class="section-kicker">ACHIEVEMENTS</div><h2>نشان‌های فاطمه 🏆</h2></div></div><div id="achievementGrid" class="achievement-grid"></div></section>
 
-    <footer>ساخته شده برای روزهای بهتر، نه روزهای بی‌نقص ✨</footer>
-  </div>
+  <section class="card"><div class="card-head"><div><div class="section-kicker">FOCUS</div><h2>یه جلسه تمرکز کوتاه 🧠</h2></div></div><div class="timer"><div id="timerDisplay" class="timer-display">25:00</div><div class="timer-options"><button class="time-chip" data-min="15">15 دقیقه</button><button class="time-chip active" data-min="25">25 دقیقه</button><button class="time-chip" data-min="45">45 دقیقه</button></div><div class="actions"><button id="timerStart" class="btn btn-primary">شروع تمرکز</button><button id="timerReset" class="btn btn-ghost">ریست</button></div><p class="muted" style="margin-top:10px">با کامل شدن جلسه، 15 XP می‌گیری ✨</p></div></section>
 
-  <dialog id="taskDialog" class="modal">
-    <form method="dialog" id="taskForm">
-      <div class="modal-head"><h3>ماموریت جدید</h3><button value="cancel" class="close-btn">×</button></div>
-      <label>عنوان<input id="newTaskTitle" required maxlength="60" placeholder="مثلاً دیدن یک ویدیوی آموزشی" /></label>
-      <label>امتیاز<input id="newTaskXP" type="number" min="5" max="100" step="5" value="10" required /></label>
-      <button value="default" id="saveTaskSubmit" class="primary-btn full">اضافه کن</button>
-    </form>
-  </dialog>
+  <section class="card"><div class="card-head"><div><div class="section-kicker">RECENT</div><h2>آخرین اتفاق‌ها</h2></div></div><div id="history" class="history"></div></section>
 
-  <dialog id="rewardsDialog" class="modal">
-    <div class="modal-head"><h3>جایزه‌ها 🎁</h3><button id="closeRewards" class="close-btn">×</button></div>
-    <div id="rewardList" class="reward-list"></div>
-  </dialog>
+  <section id="notConnected" class="card hidden"><div class="notice">این دستگاه هنوز به فضای مشترک متصل نشده. برای Live شدن، لینکی که از صفحه Setup ساخته می‌شود را روی گوشی فاطمه باز کن.</div><div style="height:10px"></div><a class="btn btn-soft btn-full" style="display:block;text-align:center;text-decoration:none" href="setup.html">رفتن به راه‌اندازی</a></section>
 
-  <script src="firebase-config.js"></script>
-  <script src="app.js"></script>
-</body>
-</html>
+  <footer class="footer">برای روزهای بهتر، نه روزهای بی‌نقص 🤍</footer>
+</main>
+<div id="toast" class="toast" role="status"></div><div id="confetti" class="confetti" aria-hidden="true"></div>
+<dialog id="confirmDialog"><div class="dialog-body"><div class="dialog-head"><h3 id="confirmTitle">ثبت جایزه</h3><button id="confirmClose" class="close">×</button></div><p id="confirmText" class="muted"></p><div style="height:14px"></div><div class="actions"><button id="confirmYes" class="btn btn-primary">آره، خرجش کن</button><button id="confirmNo" class="btn btn-ghost">فعلاً نه</button></div></div></dialog>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script><script src="shared.js"></script><script src="learner.js"></script>
+</body></html>

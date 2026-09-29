@@ -1,55 +1,21 @@
-<!doctype html>
-<html lang="fa" dir="rtl">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#111827" />
-  <link rel="icon" href="icons/icon-192.png" />
-  <link rel="stylesheet" href="styles.css" />
-  <title>پنل همراه فاطمه</title>
-</head>
-<body class="partner-page">
-  <div class="app-shell">
-    <header class="topbar">
-      <div>
-        <div class="eyebrow">پنل همراه</div>
-        <h1>پیشرفت فاطمه 🌱</h1>
-        <p class="muted">بدون فشار؛ فقط برای دیدن قدم‌های کوچیک و تشویقش.</p>
-      </div>
-      <a class="icon-btn link-icon" href="index.html">←</a>
-    </header>
+<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#201d2a"><link rel="icon" href="icons/icon-192.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><title>پنل همراه فاطمه</title></head><body>
+<main class="app"><header class="topbar"><div><div class="eyebrow">PARTNER DASHBOARD</div><h1>پنل همراه فاطمه 🤍</h1><p class="muted">همراهی و تشویق؛ بدون تبدیل شدن به بازخواست.</p></div><span id="liveStatus" class="live-pill">آفلاین</span></header>
+<section class="admin-hero"><div class="balance-label">موجودی قابل خرج فاطمه</div><div class="admin-balance"><span id="balance">۰</span> XP</div><p class="muted">XP کل: <b id="lifetime">۰</b> · <span id="level">—</span></p><div class="admin-grid"><div class="admin-mini"><span>امروز</span><b id="todayXp">۰ XP</b></div><div class="admin-mini"><span>استریک</span><b>🔥 <span id="streak">۰</span> روز</b></div><div class="admin-mini"><span>ماموریت</span><b id="taskStat">۰ / ۰</b></div><div class="admin-mini"><span>حال امروز</span><b id="mood">—</b></div></div></section>
 
-    <section class="hero-card dark-hero">
-      <div class="hero-main">
-        <div><span class="mini-label">امتیاز کل</span><div class="xp-line"><strong id="pTotalXP">0</strong><span>XP</span></div></div>
-        <div class="streak-pill">🔥 <span id="pStreak">0</span> روز</div>
-      </div>
-      <div class="level-row"><span id="pLevel">—</span><span id="pUpdated">هنوز داده‌ای نیست</span></div>
-    </section>
+<section id="lockedCard" class="card hidden"><div class="notice">این لینک دسترسی مدیریت ندارد. لینک مخصوص همراه را از Setup باز کن.</div></section>
+<div id="adminArea">
+<section class="card"><div class="card-head"><div><div class="section-kicker">XP CONTROL</div><h2>امتیاز رو آنلاین تغییر بده</h2></div></div><div class="quick-adjust"><button class="btn btn-soft" data-delta="10">+10</button><button class="btn btn-soft" data-delta="25">+25</button><button class="btn btn-soft" data-delta="50">+50</button><button class="btn btn-danger" data-delta="-10">−10</button><button class="btn btn-danger" data-delta="-25">−25</button></div><div style="height:12px"></div><div class="two-col"><div class="field"><label>مقدار دلخواه</label><input id="customDelta" class="input" type="number" placeholder="مثلاً 40 یا -20"></div><div class="field"><label>دلیل</label><input id="adjustReason" class="input" maxlength="60" placeholder="مثلاً عالی پیش رفتی"></div></div><div style="height:9px"></div><button id="applyAdjust" class="btn btn-primary btn-full">ثبت تغییر امتیاز</button><p class="muted" style="margin-top:9px">امتیاز منفی فقط از موجودی قابل خرج کم می‌شود و Level را پایین نمی‌آورد.</p></section>
 
-    <section class="stats-grid">
-      <div class="stat-card"><span>امتیاز امروز</span><strong id="pTodayXP">0 XP</strong></div>
-      <div class="stat-card"><span>ماموریت‌ها</span><strong id="pDone">0 / 0</strong></div>
-      <div class="stat-card"><span>جایزه بعدی</span><strong id="pReward">—</strong></div>
-    </section>
+<section class="card"><div class="card-head"><div><div class="section-kicker">TODAY MESSAGE</div><h2>پیام امروز از طرف تو 💌</h2></div></div><div class="field"><textarea id="partnerMessage" class="input" maxlength="220" placeholder="مثلاً: امروز هرچقدر کم هم بخونی، من به ادامه دادنت افتخار می‌کنم ❤️"></textarea></div><div style="height:9px"></div><button id="saveMessage" class="btn btn-primary btn-full">بفرست برای صفحه فاطمه</button></section>
 
-    <section class="section-card">
-      <div class="section-head"><div><span class="mini-label">اتصال</span><h2>کد مشترک</h2></div><span id="pCloudStatus" class="status-dot offline">محلی</span></div>
-      <p class="muted">همان کدی را وارد کن که داخل اپ فاطمه ثبت شده.</p>
-      <div class="inline-field"><input id="pRoomCode" maxlength="20" placeholder="FATEMEH24" /><button id="pConnect" class="secondary-btn">اتصال</button></div>
-    </section>
+<section class="card"><div class="card-head"><div><div class="section-kicker">QUEST MANAGER</div><h2>ماموریت جدید اضافه کن 🎯</h2></div></div><div class="two-col"><div class="field"><label>عنوان ماموریت</label><input id="taskTitle" class="input" maxlength="70" placeholder="مثلاً یک جلسه دوره رو ببین"></div><div class="field"><label>XP</label><input id="taskXp" class="input" type="number" min="5" max="200" value="20"></div></div><div style="height:9px"></div><button id="addTask" class="btn btn-soft btn-full">+ اضافه کردن به امروز</button><div style="height:12px"></div><div id="taskList" class="task-list"></div></section>
 
-    <section class="section-card">
-      <div class="section-head"><div><span class="mini-label">امروز</span><h2>کارهای انجام‌شده</h2></div></div>
-      <div id="pTasks" class="task-list"></div>
-    </section>
+<section class="card"><div class="card-head"><div><div class="section-kicker">REWARD MANAGER</div><h2>جایزه جدید بساز 🎁</h2></div></div><div class="two-col"><div class="field"><label>اسم جایزه</label><input id="rewardTitle" class="input" maxlength="50" placeholder="مثلاً بستنی دونفره"></div><div class="field"><label>هزینه XP</label><input id="rewardCost" class="input" type="number" min="10" max="10000" value="150"></div></div><div class="two-col" style="margin-top:9px"><div class="field"><label>ایموجی</label><input id="rewardEmoji" class="input" maxlength="4" value="🎁"></div><div class="field"><label>توضیح کوتاه</label><input id="rewardDesc" class="input" maxlength="70" placeholder="یک عصر خوشحال‌کننده"></div></div><div style="height:9px"></div><button id="addReward" class="btn btn-soft btn-full">+ اضافه کردن به فروشگاه</button><div style="height:12px"></div><div id="rewardList" class="reward-grid"></div></section>
 
-    <section class="section-card encouragement-card">
-      <div class="section-head"><div><span class="mini-label">یادآوری برای تو</span><h2>تشویق، نه بازخواست 💜</h2></div></div>
-      <p class="muted">به‌جای «چقدر خوندی؟» بگو: «دیدم امروز یه قدم برداشتی، دمت گرم. دوست داری درباره چیزی که یاد گرفتی برام بگی؟»</p>
-    </section>
-  </div>
-  <script src="firebase-config.js"></script>
-  <script src="partner.js"></script>
-</body>
-</html>
+<section class="card"><div class="card-head"><div><div class="section-kicker">LIVE ACTIVITY</div><h2>آخرین فعالیت‌ها</h2></div></div><div id="history" class="history"></div></section>
+
+<section class="card"><div class="card-head"><div><div class="section-kicker">LINKS</div><h2>لینک‌های خصوصی</h2></div></div><p class="muted">این لینک‌ها را عمومی نکن. لینک فاطمه را فقط روی گوشی خودش باز کن.</p><div style="height:10px"></div><div class="field"><label>لینک فاطمه</label><code id="learnerLink" class="link-box">—</code></div><div style="height:9px"></div><button id="shareLearner" class="btn btn-ghost btn-full">اشتراک‌گذاری لینک فاطمه</button></section>
+</div>
+<section id="notConnected" class="card hidden"><div class="notice">این دستگاه هنوز وصل نشده. ابتدا از Setup فضای مشترک بساز و لینک مخصوص همراه را باز کن.</div><div style="height:10px"></div><a class="btn btn-soft btn-full" style="display:block;text-align:center;text-decoration:none" href="setup.html">رفتن به Setup</a></section>
+<footer class="footer">هر امتیاز یک تشویقه، نه ابزار فشار 🤍</footer></main><div id="toast" class="toast" role="status"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script><script src="shared.js"></script><script src="partner.js"></script></body></html>
